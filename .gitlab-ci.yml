@@ -7,4 +7,4 @@ deploy_to_planethoster:
   stage: deploy
   script:
     - apk add --update lftp
-    - lftp -c "set ftp:ssl-allow no; open -u kxbshafa,BYC8qeaGyswSZ9 cargofest.go.yj.fr; mirror -Rnev C:\Users\bilk7\OneDrive\Bureau\Cours\PWeb\Projet\projet_blablacar"
+    - lftp -c "set ftp:ssl-allow no; open -u kxbshafa,BYC8qeaGyswSZ9 cargofest.go.yj.fr; mirror -Rnev C:\Users\bilk7\OneDrive\Bureau\Cours\PWeb\Projet\projet_blablacar /public_html"
