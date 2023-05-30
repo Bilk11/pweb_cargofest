@@ -1,8 +1,10 @@
+image: alpine:latest
+
 stages:
   - deploy
 
-deploy:
+deploy_to_planethoster:
   stage: deploy
   script:
-    - echo "Déploiement sur l'hébergeur"
-    - # Ajoutez ici les commandes nécessaires pour déployer votre code sur l'hébergeur
+    - apk add --update lftp
+    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rnev ./path/to/your/website /public_html"
