@@ -12,4 +12,4 @@ deploy_to_planethoster:
     - cd lftp-4.9.3
     - ./configure
     - make && make install
-    - lftp -c "set ftp:ssl-allow no; open -u kxbshafa,BYC8qeaGyswSZ9 cargofest.go.yj.fr; mirror -Rnev /C/Users/bilk7/OneDrive/Bureau/Cours/PWeb/Projet/projet_blablacar /public_html"
+    - lftp -c "set ftp:ssl-allow no; open -u kxbshafa,BYC8qeaGyswSZ9 cargofest.go.yj.fr; mirror -Rnev ./C/Users/bilk7/OneDrive/Bureau/Cours/PWeb/Projet/projet_blablacar /public_html"
