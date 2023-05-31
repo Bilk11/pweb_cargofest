@@ -4,12 +4,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Connexion à la base de données
-$serveur = "127.0.0.1"; // Adresse du serveur MySQL
-$utilisateur = "kxbshafa_marcus"; // Nom d'utilisateur MySQL
+$serveur = "kxbshafa_CarGoFest"; // Adresse du serveur MySQL
+$utilisateur = "kxbshafa_tmpAckfq"; // Nom d'utilisateur MySQL
 $motDePasse = "Basededonnee1234"; // Mot de passe MySQL
 $baseDeDonnees = "Connexion"; // Remplacez par le nom de votre base de données
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("127.0.0.1", "kxbshafa_marcus", "Basededonnee1234", "Connexion");
 
 // Vérifier la connexion
 if ($conn->connect_error) {
