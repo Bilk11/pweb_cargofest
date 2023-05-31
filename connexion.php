@@ -5,11 +5,14 @@ error_reporting(E_ALL);
 
 // Connexion à la base de données
 $serveur = "kxbshafa_CarGoFest"; // Adresse du serveur MySQL
-$utilisateur = "kxbshafa_tmpAckfq"; // Nom d'utilisateur MySQL
+$utilisateur = "kxbshafa_Joseph"; // Nom d'utilisateur MySQL
 $motDePasse = "Basededonnee1234"; // Mot de passe MySQL
 $baseDeDonnees = "Connexion"; // Remplacez par le nom de votre base de données
 
-$conn = new mysqli("127.0.0.1", "kxbshafa_marcus", "Basededonnee1234", "Connexion");
+$serveurMySQL = distant;
+$serveur = "127.0.0.1:3306"; // Adresse IP ou nom de domaine du serveur MySQL distant
+$port = 21; // Port MySQL distant (généralement 3306)
+$conn = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees, $port);
 
 // Vérifier la connexion
 if ($conn->connect_error) {
@@ -34,4 +37,5 @@ if ($stmt->affected_rows > 0) {
 // Fermer la connexion
 $stmt->close();
 $conn->close();
+
 ?>
