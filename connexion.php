@@ -1,38 +1,37 @@
-
 <?php
-// Informations de connexion à la base de données
-$serveur = "https://node90-eu.n0c.com/phpmyadmin/index.php?route=/sql&pos=0&db=kxbshafa_CarGoFest&table=Connexion"; // Adresse du serveur MySQL
-$utilisateur = "kxbshafa_Joseph"; // Nom d'utilisateur MySQL
-$motDePasse = "BYC8qeaGyswSZ9"; // Mot de passe MySQL
-$baseDeDonnees = "Connexion"; // Nom de la base de données
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Connexion à la base de données
-$connexion = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
+$serveur = "127.0.0.1"; // Adresse du serveur MySQL
+$utilisateur = "kxbshafa_marcus"; // Nom d'utilisateur MySQL
+$motDePasse = "Basededonnee1234"; // Mot de passe MySQL
+$baseDeDonnees = "Connexion"; // Remplacez par le nom de votre base de données
+
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Vérifier la connexion
-if ($connexion->connect_error) {
-    die("La connexion a échoué : " . $connexion->connect_error);
+if ($conn->connect_error) {
+    die("La connexion a échoué : " . $conn->connect_error);
 }
 
 // Récupérer les données du formulaire
-$login = $_POST['login']; // Récupérer la valeur du champ "login" du formulaire
-$password = $_POST['password']; // Récupérer la valeur du champ "password" du formulaire
+$login = $_POST['login'];
+$password = $_POST['password'];
 
-// Échapper les caractères spéciaux pour éviter les injections SQL
-$login = $connexion->real_escape_string($login);
-$password = $connexion->real_escape_string($password);
+// Préparer et exécuter la requête SQL
+$stmt = $conn->prepare("INSERT INTO utilisateurs (login, password) VALUES (?, ?)");
+$stmt->bind_param("ss", $login, $password);
+$stmt->execute();
 
-// Requête d'insertion des données dans la table
-$sql = "INSERT INTO Connexion (login, password) VALUES ('$login', '$password')";
-
-if ($connexion->query($sql) === TRUE) {
-    echo "Enregistrement réussi.";
+if ($stmt->affected_rows > 0) {
+    echo "Enregistrement réussi !";
 } else {
-    echo "Erreur lors de l'enregistrement : " . $connexion->error;
+    echo "Erreur lors de l'enregistrement : " . $stmt->error;
 }
 
-// Fermer la connexion à la base de données
-$connexion->close();
+// Fermer la connexion
+$stmt->close();
+$conn->close();
 ?>
-
-
