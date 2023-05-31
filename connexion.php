@@ -21,7 +21,7 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 
 // Préparer et exécuter la requête SQL
-$stmt = $conn->prepare("INSERT INTO utilisateurs (login, password) VALUES (?, ?)");
+$stmt = $conn->prepare("INSERT INTO Connexion (login, password) VALUES (?, ?)");
 $stmt->bind_param("ss", $login, $password);
 $stmt->execute();
 
