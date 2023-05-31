@@ -33,3 +33,20 @@ if ($connexion->query($sql) === TRUE) {
 // Fermer la connexion à la base de données
 $connexion->close();
 ?>
+
+<html>
+<head>
+    <title>Connexion</title>
+</head>
+<body>
+    <h2>Veuillez rentre votre nom d'utilisateur et votre mot de passe</h2>
+    <form method="POST" action="connexion.php">
+        
+        <label for="login">Login :</label>
+        <input type="text" name="login" id="login" required></br>
+        <label for="password">Password :</label>
+        <input type="password" name="password" id="password" required></br>
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
+</html>
