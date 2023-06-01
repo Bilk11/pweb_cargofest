@@ -1,41 +1,40 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Connexion à la base de données
-$serveur = "kxbshafa_CarGoFest"; // Adresse du serveur MySQL
-$utilisateur = "kxbshafa_Joseph"; // Nom d'utilisateur MySQL
-$motDePasse = "Basededonnee1234"; // Mot de passe MySQL
-$baseDeDonnees = "Connexion"; // Remplacez par le nom de votre base de données
+$servername = "127.0.0.1";
+$database = "kxbshafa_CarGoFest";
+$username = "kxbshafa_marcus";
+$password = "Basededonnee1234";
 
-$serveurMySQL = distant;
-$serveur = "127.0.0.1:3306"; // Adresse IP ou nom de domaine du serveur MySQL distant
-$port = 21; // Port MySQL distant (généralement 3306)
-$conn = new PDO($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
+try {
+    // Création d'une connexion PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("La connexion a échoué : " . $conn->connect_error);
-}
+    // Configuration des options de PDO
+    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Récupérer les données du formulaire
-$login = $_POST['login'];
-$password = $_POST['password'];
+    // Préparation de la requête d'insertion
+    $stmt = $conn->prepare("INSERT INTO Connexion (login, password) VALUES (:login, :password)");
 
-// Préparer et exécuter la requête SQL
-$stmt = $conn->prepare("INSERT INTO Connexion (login, password) VALUES (?, ?)");
-$stmt->bind_param("ss", $login, $password);
-$stmt->execute();
+    // Paramètres de la requête
+    $login = $_POST['login'];
+    $password = $_POST['password'];
 
-if ($stmt->affected_rows > 0) {
+    // Attribution des valeurs des paramètres
+    $stmt->bindParam(':login', $login);
+    $stmt->bindParam(':password', $password);
+
+    // Exécution de la requête
+    $stmt->execute();
+
     echo "Enregistrement réussi !";
-} else {
-    echo "Erreur lors de l'enregistrement : " . $stmt->error;
+} catch(PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
 }
 
-// Fermer la connexion
-$stmt->close();
-$conn->close();
-
+// Fermeture de la connexion
+$conn = null;
 ?>
