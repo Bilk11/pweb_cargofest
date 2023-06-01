@@ -18,20 +18,28 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Préparation de la requête d'insertion
-    $stmt = $conn->prepare("INSERT INTO Connexion (id,login, password) VALUES (:id,:login, :password)");
+    $stmt = $conn->prepare("INSERT INTO Festival (id,nom_festival,debut_festival,localisation,fin_festival) VALUES (:id,:nom_festival,:debut_festival,:localisation,:fin_festival)");
 
     // Paramètres de la requête
-    $login = $_POST['login'];
-    $password = $_POST['password'];
+    $nom_festival = $_POST['nom_festival'];
+    $localisation = $_POST['localisation'];
+    $debut_festival = $_POST['debut_festival'];
+    $fin_festival = $_POST['fin_festival'];
+
 
     // Attribution des valeurs des paramètres
     $stmt->bindParam(':id', $nombreAleatoire);
-    $stmt->bindParam(':login', $login);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':nom_festival', $nom_festival);
+    $stmt->bindParam(':debut_festival', $debut_festival);
+    $stmt->bindParam(':localisation', $localisation);
+    $stmt->bindParam(':fin_festival', $fin_festival);
+
+    
+
 
     // Exécution de la requête
     $stmt->execute();
-    if (!empty($login) && !empty($password)) {
+    if (!empty($nom_festival) && !empty($localisation)) {
         // Effectuer l'enregistrement dans la base de données
         // Votre code d'enregistrement ici
         // Vérifier si l'enregistrement a réussi
@@ -40,7 +48,7 @@ try {
             exit;
         
     }else{
-        header("Location: connexion.html?erreur=1");
+        header("Location: ajout_festival.html?erreur=1");
             exit;
     }
     echo "Enregistrement réussi !";
