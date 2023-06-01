@@ -12,7 +12,7 @@ $baseDeDonnees = "Connexion"; // Remplacez par le nom de votre base de données
 $serveurMySQL = distant;
 $serveur = "127.0.0.1:3306"; // Adresse IP ou nom de domaine du serveur MySQL distant
 $port = 21; // Port MySQL distant (généralement 3306)
-$conn = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees, $port);
+$conn = new PDO($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
 
 // Vérifier la connexion
 if ($conn->connect_error) {
