@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<h2>
+    Vehicule
+</h2>
+<form method="POST" action="annonce_vehicule.php">
+    
+    <label for="type_vehicule">Selectioner un type de Vehicule:</label>
+
+<select name="type_vehicule" id="type_vehicule">
+    <option value="familliale">familliale</option>
+    <option value="suv">SUV</option>
+    <option value="coupe">Coupe</option>
+    <option value="Monospace">Monospace</option>
+    <option value="citadine">Citadine</option>
+    <option value="Van">Van</option>
+</select></br>
+    <label for="place_dispo">Nombre de places disponibles :</label>
+    <input type="number" name="place_dispo" id="place_dispo" required></br>
+    <label for="date_depart">Date du depart :</label></br>
+    <input type="date" name="date_depart" id="date_depart" required></br>
+    <label for="date_retour">Date du retour (facultatif) :</label></br>
+    <input type="date" name="date_retour" id="date_retour"></br>
+
+    <input type="submit" value="Envoyer">
+</form>
+</html>

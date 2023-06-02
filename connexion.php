@@ -1,5 +1,4 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,6 +8,7 @@ $database = "kxbshafa_CarGoFest";
 $username = "kxbshafa_marcus";
 $password = "Basededonnee1234";
 $nombreAleatoire = mt_rand(1, 10000);
+
 
 try {
     // Création d'une connexion PDO
@@ -36,6 +36,7 @@ try {
         // Votre code d'enregistrement ici
         // Vérifier si l'enregistrement a réussi
             // Redirection vers une autre page en cas de succès
+        
             header("Location: index.html");
             exit;
         
