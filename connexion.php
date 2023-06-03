@@ -36,7 +36,8 @@ try {
         // Votre code d'enregistrement ici
         // Vérifier si l'enregistrement a réussi
             // Redirection vers une autre page en cas de succès
-        
+            session_start();
+            $_SESSION['loggedIn'] = true;
             header("Location: index.html");
             exit;
         

@@ -11,6 +11,12 @@ $password = "Basededonnee1234";
 $nombreAleatoire = mt_rand(1, 10000);
 
 try {
+    session_start();
+    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header('Location: connexion.html');
+    exit();
+    }
+
     // Création d'une connexion PDO
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
