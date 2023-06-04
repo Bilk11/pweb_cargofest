@@ -14,7 +14,7 @@ $nombreAleatoire = mt_rand(1, 10000);
 try {
     session_start();
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header('Location: connexion.html');
+    header('Location: identification.html');
     exit();
 }
 

@@ -3,14 +3,23 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
+    <script>
+        // Récupérer le nom d'utilisateur depuis la variable de session
+        var username = "<?php echo $_SESSION['username']; ?>";
 
+        // Afficher le nom d'utilisateur dans la page
+        document.addEventListener("DOMContentLoaded", function() {
+            var welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.textContent = "Bonjour " + username;
+        });
+    </script>
 </head>
 <body>
     <!--<a href="connexion.html" class="button">Se connecter</a></br>
     <a href="festival.html" class="button">Ajouter un festival</a></br>
     <a href="annonce_vehicule.html" class="button">Ajouter un trajet</a>-->
     <span>
-    <button type="button" onclick="window.location.href = 'connexion.html';">Se connecter</button>
+    <button type="button" onclick="window.location.href = 'identification.html';">S'identifier</button>
     <button type="button" onclick="window.location.href = 'festival.html';">Ajouter un festival</button>
     <button type="button" onclick="window.location.href = 'annonce_vehicule.html';">Ajouter un trajet</button>
     <form action="deconnexion.php" >
