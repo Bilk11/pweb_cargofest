@@ -1,18 +1,20 @@
 <?php
 session_start();
             echo 'Bonjour ' .$_SESSION['username'];
-            if ( $_SESSION['admin'] === true) {
+            if ( $_SESSION['admin'] ==true) {
                 // L'utilisateur est connecté en tant qu'administrateur
-                echo "<a href='table_utilisateur.php'>table utilisateur</a>";
+                echo "<a href='table_utilisateur.php'>table utilisateur </a>";
+                echo "<a href='table_admin.php'>table admin </a>";
 
                 // Le contenu de la page d'administration peut être affiché ici
             }
-            if ($_SESSION['loggedIn'] !== true) {
-                echo "<a href='identification.html'>S'identifier</a>";
+            if ($_SESSION['loggedIn'] != true) {
+                echo "<a href='identification.html'> S'identifier</a>";
 
                 }else{
                     echo "";
                 }
+                
         ?>
 <!DOCTYPE html>
 <html>

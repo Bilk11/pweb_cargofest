@@ -8,7 +8,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT login, password FROM Connexion";
+    $sql = "SELECT id_connexion, nom_admin FROM Admin";
     $stmt = $conn->query($sql);
 
     if ($stmt->rowCount() > 0) {
@@ -17,14 +17,14 @@ try {
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
-            echo "<td>" . $row["login"] . "</td>";
-            echo "<td>" . $row["password"] . "</td>";
+            echo "<td>" . $row["id_connexion"] . "</td>";
+            echo "<td>" . $row["nom_admin"] . "</td>";
             echo "</tr>";
         }
 
         echo "</table>";
     } else {
-        echo "Aucun enregistrement trouvé dans la table connexion.";
+        echo "Aucun enregistrement trouvé dans la table admin.";
     }
 } catch(PDOException $e) {
     echo "Erreur : " . $e->getMessage();
