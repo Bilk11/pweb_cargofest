@@ -35,6 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // L'utilisateur a entré un login et mot de passe d'admin, traitement approprié
         header('Location: index.php');
         $_SESSION['admin'] = true;
+        $_SESSION['loggedIn'] = true;
+        $_SESSION['username'] = "admin";
+
+
     }else{
 
         // Vérifier le login et le mot de passe dans la base de données
