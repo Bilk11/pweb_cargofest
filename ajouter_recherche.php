@@ -28,8 +28,8 @@ try {
 
     // Paramètres de la requête
     $place = $_POST['place_dispo'];
-    $recherche_depart = $_POST['date_depart'];
-    $recherche_retour = $_POST['date_retour'];
+    $recherche_depart = $_POST['recherche_depart'];
+    $recherche_retour = $_POST['recherche_retour'];
     $id_connexion = "SELECT password FROM Connexion WHERE login = :login";
 
 
@@ -39,8 +39,8 @@ try {
     $stmt->bindParam(':id_festival', $nombreAleatoire);
     $stmt->bindParam(':places', $place);
 
-    $stmt->bindParam(':date_aller', $date_depart);
-    $stmt->bindParam(':date_retour', $date_retour);
+    $stmt->bindParam(':recherche_aller', $recherche_depart);
+    $stmt->bindParam(':recherche_retour', $recherche_retour);
 
 
     // Exécution de la requête
