@@ -8,7 +8,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT places, date_aller, date_retour FROM Recherche";
+    $sql = "SELECT places, recherche_aller, recherche_retour FROM Recherche";
     $stmt = $conn->query($sql);
 
     if ($stmt->rowCount() > 0) {
@@ -18,8 +18,8 @@ try {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
             echo "<td>" . $row["places"] . "</td>";
-            echo "<td>" . $row["date_aller"] . "</td>";
-            echo "<td>" . $row["date_retour"] . "</td>";
+            echo "<td>" . $row["recherche_aller"] . "</td>";
+            echo "<td>" . $row["recherche_retour"] . "</td>";
             echo "</tr>";
         }
 
