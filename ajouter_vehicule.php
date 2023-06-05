@@ -54,7 +54,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         // Votre code d'enregistrement ici
         // Vérifier si l'enregistrement a réussi
             // Redirection vers une autre page en cas de succès
-            header("Location: index.html");
+            header("Location: annonce_vehicule.html");
             exit;
         
     }else{

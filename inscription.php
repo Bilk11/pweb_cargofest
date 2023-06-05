@@ -39,7 +39,7 @@ try {
             $_SESSION['loggedIn'] = true;
             $_SESSION['username'] = $login;
 
-            header("Location: index.html");
+            header("Location: index.php");
             exit;
         
     }else{
