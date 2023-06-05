@@ -37,6 +37,8 @@ try {
     // Attribution des valeurs des paramètres
     $stmt->bindParam(':id', $nombreAleatoire);
     $stmt->bindParam(':id_festival', $nombreAleatoire);
+    $stmt->bindParam(':id_connexion', $id_connexion);
+
     $stmt->bindParam(':places', $place);
 
     $stmt->bindParam(':recherche_aller', $recherche_depart);
@@ -56,7 +58,7 @@ try {
         exit;
 
     } else {
-        header("Location: ajout_recherche.html?erreur=1");
+        header("Location: ajout_recherche.php?erreur=1");
         exit;
     }
 
