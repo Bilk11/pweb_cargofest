@@ -11,6 +11,9 @@ $nombreAleatoire = mt_rand(1, 10000);
 
     $login = $_POST['login'];
     $password = $_POST['password'];
+    $prenom = $_POST['prenom'];
+    $nom = $_POST['nom'];
+    $date_naissance = $_POST['date_naissance'];
 
 try {
     // Création d'une connexion PDO
@@ -18,7 +21,7 @@ try {
 
     // Configuration des options de PDO
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("INSERT INTO Connexion (id,login, password) VALUES (:id,:login, :password)");
+    $stmt = $conn->prepare("INSERT INTO Connexion (id,login, password,prenom,nom,date_naissance) VALUES (:id,:login, :password, :prenom,:nom,:date_naissance)");
 
     // Paramètres de la requête
     
@@ -27,6 +30,12 @@ try {
     $stmt->bindParam(':id', $nombreAleatoire);
     $stmt->bindParam(':login', $login);
     $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':date_naissance', $date_naissance);
+
+
+
 
     // Exécution de la requête
     $stmt->execute();
@@ -37,7 +46,7 @@ try {
             // Redirection vers une autre page en cas de succès
             session_start();
             $_SESSION['loggedIn'] = true;
-            $_SESSION['username'] = $login;
+            $_SESSION['username'] = $prenom;
 
             header("Location: index.php");
             exit;
