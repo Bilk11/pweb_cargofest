@@ -12,7 +12,7 @@ $nombreAleatoire = mt_rand(1, 10000);
 
 try {
     session_start();
-    if (!isset($_SESSION['admin']) || $_SESSION['user'] !== 'admin') {
+    if ($_SESSION['admin'] !== true) {
     header('Location: index.php');
     exit();
     }
