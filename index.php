@@ -21,6 +21,29 @@ if ($_SESSION['loggedIn'] != true) {
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+        a {
+            background-color: #0a0a23;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            margin-left: 2%;
+            box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+            font-family: Calibri, Helvetica, sans-serif;
+            width: 200px;
+            height: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: white;
+            color: black;
+            transition: 0.5s;
+            text-decoration: none;
+        }
+    </style>
     <meta charset="utf-8">
 
 </head>
