@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Ajouter une recherche</title>
+</head>
+<body>
+    <h2>Recherche de Trajet</h2>
+    <form method="POST" action="ajouter_recherche.php">
+        <label for="Festival">Choisissez un Festival :</label>
+        <select name="Festival" id="Festival">
+            <?php foreach ($Festivals as $Festival): ?>
+                <option value="<?php echo $Festival['id']; ?>"><?php echo $Festival['nom_Festival']; ?></option>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+        </select><br>
+        <label for="places">Nombre de places recherchées :</label>
+        <input type="number" name="places" id="places" required><br>
+        <label for="recherche_depart">Date du depart :</label><br>
+        <input type="date" name="recherche_depart" id="recherche_depart"><br>
+        <label for="recherche_retour">Date du retour :</label><br>
+        <input type="date" name="recherche_retour" id="recherche_retour"><br>
 
-<h2>
-    Recherche de Trajet
-</h2>
-<form method="POST" action="ajouter_recherche.php">
-    
-    <label for="places">Nombre de places recherchées :</label>
-    <input type="number" name="places" id="places" required></br>
-    <label for="recherche_depart">Date du depart :</label></br>
-    <input type="date" name="recherche_depart" id="recherche_depart" ></br>
-    <label for="recherche_retour">Date du retour :</label></br>
-    <input type="date" name="recherche_retour" id="recherche_retour"></br>
-
-    <input type="submit" value="Envoyer">
-</form>
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo 'Bonjour ' . $_SESSION['username'];
+echo 'Bonjour ' . $_SESSION['username'] . '<br>';
 if ($_SESSION['admin'] == true) {
     // L'utilisateur est connecté en tant qu'administrateur
     echo "<a href='table_utilisateur.php'>table utilisateur </a>";
