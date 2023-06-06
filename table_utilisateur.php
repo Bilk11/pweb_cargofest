@@ -11,12 +11,12 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $passwordbase);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT login, password, Prenom, Nom, date_naissance FROM Connexion";
+    $sql = "SELECT id,login, password, Prenom, Nom, date_naissance FROM Connexion";
     $stmt = $conn->query($sql);
 
     if ($stmt->rowCount() > 0) {
         echo "<table>";
-        echo "<tr><th>Login</th><th>Mot de passe</th><th>Prénom</th><th>Nom</th><th>Date de naissance</th></tr>";
+        echo "<tr><th>Login</th><th>Mot de passe</th><th>Prénom</th><th>Nom</th><th>Date de naissance</th><th>Supprimer</th><th>Modifier</th></tr>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
@@ -25,6 +25,8 @@ try {
             echo "<td>" . $row["Prenom"] . "</td>";
             echo "<td>" . $row["Nom"] . "</td>";
             echo "<td>" . $row["date_naissance"] . "</td>";
+            echo "<td><a href=\"delete_utilisateur.php?id=" . $row["id"] . "\">Supprimer</a></td>";
+            echo "<td><a href=\"edit_utilisateur.php?id=" . $row["id"] . "\">Modifier</a></td>";
             echo "</tr>";
         }
 
@@ -32,10 +34,11 @@ try {
     } else {
         echo "Aucun enregistrement trouvé dans la table connexion.";
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 ?>
+
 
 <html>
 <head>
