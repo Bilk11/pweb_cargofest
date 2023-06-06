@@ -10,7 +10,13 @@ $passwordbase = "Basededonnee1234";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $passwordbase);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    if (isset($_GET['delete'])) {
+        $deleteId = $_GET['delete'];
+        $deleteQuery = "DELETE FROM Connexion WHERE id = :id";
+        $deleteStmt = $conn->prepare($deleteQuery);
+        $deleteStmt->bindParam(':id', $deleteId);
+        $deleteStmt->execute();
+    }
     $sql = "SELECT id,login, password, Prenom, Nom, date_naissance FROM Connexion";
     $stmt = $conn->query($sql);
 
@@ -25,7 +31,7 @@ try {
             echo "<td>" . $row["Prenom"] . "</td>";
             echo "<td>" . $row["Nom"] . "</td>";
             echo "<td>" . $row["date_naissance"] . "</td>";
-            echo "<td><a href=\"delete_utilisateur.php?id=" . $row["id"] . "\">Supprimer</a></td>";
+            echo "<td><a href=\"?delete=" . $row['id'] . "\">Supprimer</a></td>";
             echo "<td><a href=\"edit_utilisateur.php?id=" . $row["id"] . "\">Modifier</a></td>";
             echo "</tr>";
         }
