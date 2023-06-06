@@ -8,15 +8,18 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT places, recherche_aller, recherche_retour FROM Recherche";
+    $sql = "SELECT R.id_festival, R.places, R.recherche_aller, R.recherche_retour, F.nom_festival 
+    FROM Recherche R
+    INNER JOIN Festival F ON R.id_festival = F.id";
     $stmt = $conn->query($sql);
 
     if ($stmt->rowCount() > 0) {
         echo "<table>";
-        echo "<tr><th>Places</th><th>Date Aller</th><th>Date Retour</th></tr>";
+        echo "<tr><th>Festival</th><th>Places</th><th>Date Aller</th><th>Date Retour</th></tr>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
+            echo "<td>" . $row["nom_festival"] . "</td>";
             echo "<td>" . $row["places"] . "</td>";
             echo "<td>" . $row["recherche_aller"] . "</td>";
             echo "<td>" . $row["recherche_retour"] . "</td>";
