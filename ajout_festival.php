@@ -12,8 +12,8 @@ $nombreAleatoire = mt_rand(1, 10000);
 
 try {
     session_start();
-    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header('Location: identification.html');
+    if (!isset($_SESSION['admin']) || $_SESSION['user'] !== 'admin') {
+    header('Location: index.php');
     exit();
     }
 
