@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="nom" value="<?php echo $nom; ?>">
         <br>
         <label for="date_naissance">Date de naissance:</label>
-        <input type="text" name="date_naissance" value="<?php echo $dateNaissance; ?>">
+        <input type="date" name="date_naissance" value="<?php echo $dateNaissance; ?>">
         <br>
         <input type="submit" value="Modifier">
     </form>
