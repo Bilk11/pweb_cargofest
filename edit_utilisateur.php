@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updateStmt->bindParam(':id', $id);
     $updateStmt->execute();
 
-    header("Location: table_utilisateur.php"); // Redirige vers la page festival.html après la modification
+    header("Location: table_utilisateur.php"); 
     exit();
 } else {
     if (isset($_GET["id"])) {

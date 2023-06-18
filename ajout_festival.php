@@ -13,8 +13,8 @@ $nombreAleatoire = mt_rand(1, 10000);
 try {
     session_start();
     if (!isset($_SESSION['admin']) || $_SESSION['user'] !== 'admin') {
-    header('Location: index.php');
-    exit();
+        header('Location: index.php');
+        exit();
     }
 
     // Création d'une connexion PDO
@@ -40,7 +40,7 @@ try {
     $stmt->bindParam(':localisation', $localisation);
     $stmt->bindParam(':fin_festival', $fin_festival);
 
-    
+
 
 
     // Exécution de la requête
@@ -49,16 +49,15 @@ try {
         // Effectuer l'enregistrement dans la base de données
         // Votre code d'enregistrement ici
         // Vérifier si l'enregistrement a réussi
-            // Redirection vers une autre page en cas de succès
-            header("Location: festival.html");
-            exit;
-        
-    }else{
+        // Redirection vers une autre page en cas de succès
+        header("Location: festival.html");
+        exit;
+
+    } else {
         header("Location: ajout_festival.html?erreur=1");
-            exit;
+        exit;
     }
-    echo "Enregistrement réussi !";
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 

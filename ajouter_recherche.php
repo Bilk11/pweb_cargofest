@@ -34,7 +34,7 @@ try {
         $recherche_retour = $_POST['recherche_retour'];
 
         // Préparation de la requête d'insertion
-        $stmt = $conn->prepare("INSERT INTO Recherche (id, id_Festival, place, recherche_aller, recherche_retour) VALUES (:id, :id_Festival, :place, :recherche_aller, :recherche_retour)");
+        $stmt = $conn->prepare("INSERT INTO Recherche (id, id_Festival, places, recherche_aller, recherche_retour) VALUES (:id, :id_Festival, :place, :recherche_aller, :recherche_retour)");
 
         // Attribution des valeurs des paramètres
         $stmt->bindParam(':id', $nombreAleatoire);

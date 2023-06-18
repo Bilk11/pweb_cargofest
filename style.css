@@ -1,3 +1,41 @@
+html {
+  Font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+header {
+  background-color: #3498DB;
+  padding: 1%;
+  text-align: left;
+  font-size: 800;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  display: block;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 2%;
+  font-family: Calibri, Helvetica, sans-serif;
+  width: 20%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.links {
+  margin: 5%;
+  color: #3498DB;
+  text-align: center;
+  font-size: 30px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -24,45 +62,80 @@ table tr:hover {
 }
 
 /* Styles pour les boutons */
-button {
-  background-color: #0a0a23;
+.contenue button {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #3498DB;
   color: white;
   border: none;
   border-radius: 10px;
   margin-left: 2%;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
   font-family: Calibri, Helvetica, sans-serif;
-  width: 200px;
-  height: auto;
+  width: 20%;
+  height: 200px;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 50px;
+  justify-content: center;
 }
 
 button:hover {
+  border: solid black;
   background-color: white;
   color: black;
   transition: 0.5s;
-
 }
 
-
-a {
-  background-color: #0a0a23;
+.links a {
+  font-size: 30px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #3498DB;
   color: white;
   border: none;
   border-radius: 10px;
   margin-left: 2%;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  font-family: Calibri, Helvetica, sans-serif;
   width: 200px;
   height: auto;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-a:hover {
+.links a:hover {
+  border: solid black;
   background-color: white;
   color: black;
   transition: 0.5s;
+}
 
+i {
+  font-size: 30px;
+}
+
+.contenue {
+  text-align: center;
+}
+
+.deco button {
+  display: flex;
+  background-color: #3498DB;
+  color: white;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  margin-left: 2%;
+  font-family: Calibri, Helvetica, sans-serif;
+  font-size: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 1%;
+  width: auto;
+}
+
+.deco button:hover {
+  border: solid black;
+  background-color: white;
+  color: black;
+  transition: 0.5s;
 }

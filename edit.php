@@ -6,51 +6,61 @@ $password = "Basededonnee1234";
 $pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$id = $_GET['id'];
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nom_festival'], $_POST['localisation'], $_POST['debut_festival'], $_POST['fin_festival'])) {
-    // Perform the update operation
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST["id"]; // Ajout de cette ligne
     $nom_festival = $_POST['nom_festival'];
-$localisation = $_POST['localisation'];
-$debut_festival = $_POST['debut_festival'];
-$fin_festival = $_POST['fin_festival'];
+    $localisation = $_POST['localisation'];
+    $debut_festival = $_POST['debut_festival'];
+    $fin_festival = $_POST['fin_festival'];
 
-$updateQuery = "UPDATE Festival SET nom_festival = :nom, localisation = :localisation, debut_festival = :debut, fin_festival = :fin WHERE id = :id";
-$updateStmt = $pdo->prepare($updateQuery);
-$updateStmt->bindParam(':nom', $nom_festival);
-$updateStmt->bindParam(':localisation', $localisation);
-$updateStmt->bindParam(':debut', $debut_festival);
-$updateStmt->bindParam(':fin', $fin_festival);
-$updateStmt->bindParam(':id', $id);
-$updateStmt->execute();
+    $updateQuery = "UPDATE Festival SET nom_festival = :nom_festival, localisation = :localisation, debut_festival = :debut_festival, fin_festival = :fin_festival WHERE id = :id";
+    $updateStmt = $pdo->prepare($updateQuery);
+    $updateStmt->bindParam(':nom_festival', $nom_festival);
+    $updateStmt->bindParam(':localisation', $localisation);
+    $updateStmt->bindParam(':debut_festival', $debut_festival);
+    $updateStmt->bindParam(':fin_festival', $fin_festival);
+    $updateStmt->bindParam(':id', $id);
+    $updateStmt->execute();
 
-$selectQuery = "SELECT nom_festival, localisation, debut_festival, fin_festival FROM Festival WHERE id = :id";
-$selectStmt = $pdo->prepare($selectQuery);
-$selectStmt->bindParam(':id', $id);
-$selectStmt->execute();
-
-$row = $selectStmt->fetch(PDO::FETCH_ASSOC);
-
-$nom_festival = $row['nom_festival'];
-$localisation = $row['localisation'];
-$debut_festival = $row['debut_festival'];
-$fin_festival = $row['fin_festival'];
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nom_festival'], $_POST['localisation'], $_POST['debut_festival'], $_POST['fin_festival'])) {
-
-
-    //  redirige vers la page aui vient d'etre modif
-    header("Location: festival.html");
+    if ($updateStmt->rowCount() > 0) {
+        header("Location: affiche_festival.php");
+        exit();
+    } else {
+        echo "La mise à jour a échoué.";
+    }
     exit();
+} else {
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        $selectQuery = "SELECT id, nom_festival, localisation, debut_festival, fin_festival FROM Festival WHERE id = :id";
+
+        $selectStmt = $pdo->prepare($selectQuery);
+        $selectStmt->bindParam(':id', $id);
+        $selectStmt->execute();
+        $row = $selectStmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $id = $row["id"];
+            $nom_festival = $row["nom_festival"];
+            $localisation = $row["localisation"];
+            $debut_festival = $row["debut_festival"];
+            $fin_festival = $row["fin_festival"];
+        } else {
+            echo "Annonce non trouvée.";
+            exit();
+        }
+    } else {
+        echo "Identifiant de l'annonce non spécifié.";
+        exit();
+    }
 }
-}
-
-
-
 ?>
+
 <html>
 <form action="edit.php?id=<?php echo $id; ?>" method="POST">
-    <label for="nom_festival">Nom du festival:</label>
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <label for="nom_festival">Nom festival:</label>
     <input type="text" name="nom_festival" value="<?php echo $nom_festival; ?>">
     <br>
     <label for="localisation">Localisation:</label>
@@ -66,4 +76,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nom_festival'], $_POS
 
 </form>
 
-    </html>
+</html>
